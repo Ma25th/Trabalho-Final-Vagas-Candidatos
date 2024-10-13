@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const CandidatoController = require('../Controller/CandidatoController');
+router.get('/candidatos/search', CandidatoController.getCandidatoByName);
+router.get('/candidatos', CandidatoController.getAllCandidatos);
+router.get('/candidatos/:cpf', CandidatoController.getCandidatoByCpf);
+router.post('/candidatos', CandidatoController.createCandidato);
+router.put('/candidatos/:cpf', CandidatoController.updateCandidato);
+router.delete('/candidatos/:cpf', CandidatoController.deleteCandidato);
+module.exports = router;

@@ -1,0 +1,28 @@
+CREATE DATABASE temosvagas;
+
+CREATE TABLE candidato (
+  pk_cand_cpf VARCHAR(14) PRIMARY KEY,
+  cand_nome VARCHAR(100) NOT NULL,
+  cand_endereco VARCHAR(200),
+  cand_telefone VARCHAR(20)
+);
+
+
+CREATE TABLE vaga (
+  pk_vaga_codigo INT AUTO_INCREMENT PRIMARY KEY,
+  vaga_cargo VARCHAR(100) NOT NULL,
+  vaga_salario DECIMAL(10,2),
+  vaga_cidade VARCHAR(100),
+  vaga_quantidade INT
+);
+
+
+CREATE TABLE candidato_vaga (
+  data_inscricao DATE,
+  horario_inscricao TIME,
+  pk_cand_cpf VARCHAR(14),
+  pk_vaga_codigo INT,
+  PRIMARY KEY (pk_cand_cpf, pk_vaga_codigo),
+  FOREIGN KEY (pk_cand_cpf) REFERENCES candidato(pk_cand_cpf),
+  FOREIGN KEY (pk_vaga_codigo) REFERENCES vaga(pk_vaga_codigo)
+);
